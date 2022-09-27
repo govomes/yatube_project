@@ -1,0 +1,35 @@
+<!DOCTYPE html> <!-- Используется html 5 версии -->
+{% extends 'base.html' %}
+
+{% block title_head %}
+  Здесь будет информация о группах проекта Yatube
+  {% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  {% block title %}
+    <h1>Лев Толстой – зеркало русской революции.</h1>
+  {% endblock %}
+  {% for post in posts %}
+    <h3>
+      {{ group.title }}
+    </h3>
+    <p>
+      {{ group.description }}
+    </p>
+    <article>
+      <ul>
+        <li>
+          Автор: {{ post.author.get_full_name }}
+        </li>
+        <li>
+          Дата публикации: {{ post.pub_date|date:"d M Y" }}
+        </li>
+      <p>
+        {{ post.text }}
+      </p>
+    </article>
+  {% endfor %}
+  </div>
+
+{% endblock %}
